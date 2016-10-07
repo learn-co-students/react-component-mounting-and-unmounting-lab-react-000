@@ -38,9 +38,14 @@ class Game extends React.Component {
     this.takeItOff = this.takeItOff.bind(this);
   }
 
+  componentWillMount() {
+      this.setCurrentTime()
+  }
+
   render() {
     const { pancakes, burnt, cooked, raw, time } = this.state;
     const pans = pancakes.map((pancake, index) => <Pancake key={index} id={pancake} takeItOff={this.takeItOff} />);
+    console.log(this.state.time)
     return (
       <div className="Game">
         <span>Pancake shop opened at: {time ? time.toString() : ''}</span>
